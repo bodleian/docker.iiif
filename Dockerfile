@@ -7,17 +7,13 @@ RUN useradd -d /home/bottle -m bottle
 
 # make sure sources are up to date
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+RUN sudo add-apt-repository ppa:fkrull/deadsnakes
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
 
-RUN apt-get install libexpat1 -y
-RUN apt-get install libexpat1-dev -y
-RUN apt-get install libssl-dev -y
-RUN apt-get install libc6-dev -y
-
-RUN apt-get install python2.7-dev -y
+RUN apt-get install python2.7 -y
 RUN apt-get install python-lxml -y
 RUN apt-get install python-dev -y
 RUN apt-get install python-setuptools -y
