@@ -15,7 +15,7 @@ RUN apt-get install python-lxml -y
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
 ADD / /home/bottle/
-RUN (pip install bottle && pip install magic && pip install Pillow)
+RUN (pip install bottle && pip install python-magic && pip install Pillow)
 
 # in case you'd prefer to use links, expose the port
 EXPOSE 8080
