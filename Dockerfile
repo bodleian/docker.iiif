@@ -9,6 +9,7 @@ RUN useradd -d /home/bottle -m bottle
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
+RUN apt-get install lynx
 
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
