@@ -7,10 +7,11 @@ RUN useradd -d /home/bottle -m bottle
 
 # make sure sources are up to date
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-RUN sudo apt-get install software-properties-common
-RUN sudo add-apt-repository ppa:fkrull/deadsnakes
 RUN apt-get update
 RUN apt-get upgrade -y
+RUN apt-get install software-properties-common -y
+RUN add-apt-repository ppa:fkrull/deadsnakes -y
+
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
 
