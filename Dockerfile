@@ -10,12 +10,12 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install lynx -y
-RUN apt-get install gcc -y
+RUN apt-get install python-lxml
 
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
 ADD / /home/bottle/
-RUN (pip install bottle && pip install lxml)
+RUN (pip install bottle)
 
 # in case you'd prefer to use links, expose the port
 EXPOSE 8080
