@@ -12,7 +12,7 @@ RUN apt-get upgrade -y
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
 ADD validator.py /home/bottle/validator.py
-ADD html/* /home/bottle/html
+ADD / /home/bottle/
 RUN pip install bottle
 
 # in case you'd prefer to use links, expose the port
