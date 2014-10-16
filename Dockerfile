@@ -18,5 +18,5 @@ RUN pip install bottle
 # in case you'd prefer to use links, expose the port
 EXPOSE 8080
 #ENTRYPOINT ["/usr/bin/python", "/home/bottle/server.py"]
-ENTRYPOINT ["/home/bottle/"]
+#ENTRYPOINT ["/home/bottle/"]
 USER bottle
