@@ -9,6 +9,9 @@ RUN useradd -d /home/bottle -m bottle
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
+RUN apt-get install libgirepository-1.0-1 -y
+RUN apt-get install libglib2.0-0 -y
+RUN apt-get install gir1.2-glib-2.0 -y
 RUN apt-get install python-gi -y
 RUN apt-get install software-properties-common -y
 RUN add-apt-repository ppa:fkrull/deadsnakes -y
