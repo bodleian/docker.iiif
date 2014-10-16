@@ -12,6 +12,10 @@ RUN apt-get upgrade -y
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
 
+RUN apt-get install libexpat1-dev -y
+RUN apt-get install libssl-dev -y
+RUN apt-get install libc6-dev -y
+
 RUN apt-get install python2.7-dev -y
 RUN apt-get install python-lxml -y
 RUN apt-get install python-dev -y
@@ -25,6 +29,6 @@ RUN (pip install bottle && pip install python-magic && pip install Pillow)
 
 # in case you'd prefer to use links, expose the port
 EXPOSE 8080
-ENTRYPOINT ["/usr/bin/python", "/home/bottle/validator.py"]
+ENTRYPOINT ["/usr/bin/python2.7", "/home/bottle/validator.py"]
 #ENTRYPOINT ["/home/bottle/"]
 USER bottle
