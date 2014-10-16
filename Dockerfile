@@ -11,7 +11,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
-RUN apt-get install python2.7-dev -y
+RUN apt-get install python2.7 -y
 RUN apt-get install python-lxml -y
 RUN apt-get install python-dev -y
 RUN apt-get install python-setuptools -y
