@@ -10,7 +10,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install lynx -y
-RUN apt-get install gcc
+RUN apt-get install gcc -y
 
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
