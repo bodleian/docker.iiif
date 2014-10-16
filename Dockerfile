@@ -1,4 +1,5 @@
-FROM ubuntu
+# Docker version 1.2.0, build fa7b24f
+FROM ubuntu:14.04
 
 # create user
 RUN groupadd web
