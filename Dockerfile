@@ -14,7 +14,7 @@ RUN apt-get install lynx -y
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
 ADD / /home/bottle/
-RUN pip install bottle
+RUN (pip install bottle && pip install lxml)
 
 # in case you'd prefer to use links, expose the port
 EXPOSE 8080
