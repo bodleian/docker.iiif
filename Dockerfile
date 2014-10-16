@@ -1,8 +1,4 @@
-# A super-simple "hello world" server that exposes port 8080
-#
-# VERSION               0.1.0
 FROM ubuntu
-MAINTAINER Joshua Conner <joshua.conner@gmail.com>
 
 # create user
 RUN groupadd web
@@ -15,7 +11,8 @@ RUN apt-get upgrade -y
 
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
-ADD server.py /home/bottle/server.py
+ADD validator.py /home/bottle/validator.py
+ADD html/* /home/bottle/html
 RUN pip install bottle
 
 # in case you'd prefer to use links, expose the port
