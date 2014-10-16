@@ -12,6 +12,9 @@ RUN apt-get upgrade -y
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
 RUN apt-get install python-lxml -y
+RUN apt-get install python-dev -y
+RUN apt-get install python-setuptools -y
+RUN apt-get install build-essential -y
 
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
