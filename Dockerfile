@@ -12,6 +12,7 @@ RUN apt-get upgrade -y
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
 
+RUN apt-get install libexpat1 -y
 RUN apt-get install libexpat1-dev -y
 RUN apt-get install libssl-dev -y
 RUN apt-get install libc6-dev -y
