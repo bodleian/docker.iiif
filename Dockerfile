@@ -1,5 +1,5 @@
 # Docker version 1.2.0, build fa7b24f
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 
 # create user
 RUN groupadd web
@@ -7,9 +7,9 @@ RUN useradd -d /home/bottle -m bottle
 
 # make sure sources are up to date
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get -f install
-RUN apt-get upgrade -y
+RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
+
+
 RUN apt-get install wget -y
 RUN apt-get install gcc -y
 RUN apt-get install g++ -y
