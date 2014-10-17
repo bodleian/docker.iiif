@@ -62,6 +62,6 @@ RUN (pip install bottle && pip install python-magic && pip install Pillow)
 # -------------------------------------------------------------------------
 
 EXPOSE 8080
-ENTRYPOINT ["/home/bottle/html/index.html"]
+#ENTRYPOINT ["/home/bottle/html/index.html"]
 #ENTRYPOINT ["/home/bottle/"]
 USER bottle
