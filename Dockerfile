@@ -9,17 +9,18 @@ RUN useradd -d /home/bottle -m bottle
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install libgirepository-1.0-1 -y
-RUN apt-get install libglib2.0-0 -y
-RUN apt-get install gir1.2-glib-2.0 -y
-RUN apt-get install python-gi -y
-RUN apt-get install software-properties-common -y
-RUN add-apt-repository ppa:fkrull/deadsnakes -y
+
+# -------------------------------------------------------------------------
+# --------------------------- INSTALL PYTHON ------------------------------
+# -------------------------------------------------------------------------
+
+RUN (cd mkdir /home/Downloads/ && cd /home/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /root/Downloads/Python-2.7.6)
+RUN /root/Downloads/Python-2.7.6/configure --prefix=/usr/bin/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
+RUN make
+RUN make install
 
 RUN apt-get install lynx -y
 RUN apt-get install gcc -y
-
-RUN apt-get install python2.7 -y
 RUN apt-get install python-lxml -y
 RUN apt-get install python-dev -y
 RUN apt-get install python-setuptools -y
