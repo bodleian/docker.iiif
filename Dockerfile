@@ -11,8 +11,6 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install wget -y
 RUN apt-get install gcc -y
-RUN apt-get install python-setuptools -y
-RUN apt-get install build-essential -y
 RUN apt-get install g++ -y
 RUN apt-get install make -y
 
@@ -26,6 +24,8 @@ RUN /home/Downloads/Python-2.7.6/configure --prefix=/usr/bin/python/2.7.6 --enab
 RUN make
 RUN make install
 
+RUN apt-get install python-setuptools -y
+RUN apt-get install build-essential -y
 RUN apt-get install python-dev -y
 RUN apt-get install lynx -y
 RUN apt-get install python-lxml -y
