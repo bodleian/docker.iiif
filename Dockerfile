@@ -1,13 +1,18 @@
 # Docker version 1.2.0, build fa7b24f
 FROM ubuntu:14.04
 
-# create user
+# -------------------------------------------------------------------------
+# --------------------------- CREATE USER  --------------------------------
+# -------------------------------------------------------------------------
+
 RUN groupadd web
 RUN useradd -d /home/bottle -m bottle
 
-# make sure sources are up to date
+# -------------------------------------------------------------------------
+# --------------------------- UPDATE SOURCES ------------------------------
+# -------------------------------------------------------------------------
+
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-# Docker version 1.2.0, build fa7b24f
  
 # -------------------------------------------------------------------------
 # --------------------------- STIPULATE OS --------------------------------
@@ -43,15 +48,19 @@ RUN /home/bottle/Downloads/Python-2.7.6/configure --prefix=/home/bottle/python/2
 RUN make
 RUN make install
 
+# -------------------------------------------------------------------------
+# --------------------------- DEPENDENCIES --------------------------------
+# -------------------------------------------------------------------------
+
 RUN apt-get install lynx -y
 RUN apt-get install python-lxml -y
-
-
-# install pip and hello-world server requirements
 RUN apt-get install python-pip -y
 RUN (pip install bottle && pip install python-magic && pip install Pillow)
 
-# in case you'd prefer to use links, expose the port
+# -------------------------------------------------------------------------
+# --------------------------- PORT & ENTRYPOINT ---------------------------
+# -------------------------------------------------------------------------
+
 EXPOSE 8080
 ENTRYPOINT ["/usr/bin/python2.7", "/home/bottle/validator.py"]
 #ENTRYPOINT ["/home/bottle/"]
