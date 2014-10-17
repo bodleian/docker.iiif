@@ -7,34 +7,48 @@ RUN useradd -d /home/bottle -m bottle
 
 # make sure sources are up to date
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
+# Docker version 1.2.0, build fa7b24f
+ 
+# -------------------------------------------------------------------------
+# --------------------------- STIPULATE OS --------------------------------
+# -------------------------------------------------------------------------
 
+FROM ubuntu:14.04
 
-RUN apt-get install wget -y
-RUN apt-get install gcc -y
-RUN apt-get install g++ -y
-RUN apt-get install make -y
+# -------------------------------------------------------------------------
+# --------------------------- UPDATE OS -----------------------------------
+# -------------------------------------------------------------------------
 
+RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
+
+# -------------------------------------------------------------------------
+# --------------------------- COPY SOURCE INTO CONTAINER ------------------
+# -------------------------------------------------------------------------
+
+COPY / /home/bottle/
+
+# -------------------------------------------------------------------------
+# --------------------------- INSTALL REQS --------------------------------
+# -------------------------------------------------------------------------
+
+RUN apt-get -y install $(cat /home/bottle/ubuntu_requirements_ubuntu14)
+RUN mkdir -p /home/bottle/Downloads
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL PYTHON ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (export PATH="/usr/bin:$PATH" && mkdir /home/Downloads/ && cd /home/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /home/Downloads/Python-2.7.6)
-RUN /home/Downloads/Python-2.7.6/configure --prefix=/usr/bin/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
+RUN (cd /home/bottle/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /home/bottle/Downloads/Python-2.7.6)
+RUN /home/bottle/Downloads/Python-2.7.6/configure --prefix=/usr/bin/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
 RUN make
 RUN make install
 
-RUN apt-get install python-setuptools -y
-RUN apt-get install build-essential -y
-RUN apt-get install python-dev -y
 RUN apt-get install lynx -y
 RUN apt-get install python-lxml -y
 
 
 # install pip and hello-world server requirements
 RUN apt-get install python-pip -y
-ADD / /home/bottle/
 RUN (pip install bottle && pip install python-magic && pip install Pillow)
 
 # in case you'd prefer to use links, expose the port
