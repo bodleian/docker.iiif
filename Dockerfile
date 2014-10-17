@@ -14,7 +14,7 @@ RUN apt-get upgrade -y
 # --------------------------- INSTALL PYTHON ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd mkdir /home/Downloads/ && cd /home/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /root/Downloads/Python-2.7.6)
+RUN (mkdir /home/Downloads/ && cd /home/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /root/Downloads/Python-2.7.6)
 RUN /root/Downloads/Python-2.7.6/configure --prefix=/usr/bin/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
 RUN make
 RUN make install
