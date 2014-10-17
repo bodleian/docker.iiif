@@ -31,7 +31,7 @@ COPY / /home/bottle/
 # --------------------------- INSTALL REQS --------------------------------
 # -------------------------------------------------------------------------
 
-RUN apt-get -y install $(cat /home/bottle/ubuntu_requirements_ubuntu14)
+RUN apt-get -y install $(cat /home/bottle/ubuntu_requirements14)
 RUN mkdir -p /home/bottle/Downloads
 
 # -------------------------------------------------------------------------
