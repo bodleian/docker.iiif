@@ -1,6 +1,6 @@
 # docker.iiif
 IIIF validator for internal testing
-
+```
 $ docker run -d -p 8080 iiif/validator
 ```
 This will map port 8080, which the server is listening on, to a dynamically allocated port on the host. You can see which port by running `docker ps`:
