@@ -10,6 +10,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install wget -y
+RUN apt-get install gcc -y
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL PYTHON ------------------------------
@@ -21,7 +22,6 @@ RUN make
 RUN make install
 
 RUN apt-get install lynx -y
-RUN apt-get install gcc -y
 RUN apt-get install python-lxml -y
 RUN apt-get install python-dev -y
 RUN apt-get install python-setuptools -y
