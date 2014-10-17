@@ -27,6 +27,13 @@ RUN groupadd web
 RUN useradd -d /home/bottle -m bottle
 
 # -------------------------------------------------------------------------
+# --------------------------- COPY SOURCE INTO CONTAINER ------------------
+# -------------------------------------------------------------------------
+
+COPY / /home/bottle/
+RUN sudo chown -R bottle:bottle /home/bottle
+
+# -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
 # -------------------------------------------------------------------------
 
@@ -51,19 +58,11 @@ RUN apt-get install python-lxml -y
 RUN apt-get install python-pip -y
 RUN (pip install bottle && pip install python-magic && pip install Pillow)
 
-
-# -------------------------------------------------------------------------
-# --------------------------- COPY SOURCE INTO CONTAINER ------------------
-# -------------------------------------------------------------------------
-
-USER bottle
-COPY / /home/bottle/
-
 # -------------------------------------------------------------------------
 # --------------------------- PORT & ENTRYPOINT ---------------------------
 # -------------------------------------------------------------------------
 
 EXPOSE 8080
-ENTRYPOINT ["/home/bottle/html/index.html"]
+#ENTRYPOINT ["/home/bottle/html/index.html"]
 #ENTRYPOINT ["/home/bottle/"]
-
+USER bottle
