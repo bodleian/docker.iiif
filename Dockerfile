@@ -43,10 +43,10 @@ RUN mkdir -p /home/bottle/Downloads
 # --------------------------- INSTALL PYTHON ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bottle/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /home/bottle/Downloads/Python-2.7.6)
-RUN /home/bottle/Downloads/Python-2.7.6/configure --prefix=/home/bottle/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/home/bottle/python/2.7.6/lib"
-RUN make
-RUN make install
+#RUN (cd /home/bottle/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /home/bottle/Downloads/Python-2.7.6)
+#RUN /home/bottle/Downloads/Python-2.7.6/configure --prefix=/home/bottle/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/home/bottle/python/2.7.6/lib"
+#RUN make
+#RUN make install
 
 # -------------------------------------------------------------------------
 # --------------------------- DEPENDENCIES --------------------------------
@@ -62,6 +62,6 @@ RUN (pip install bottle && pip install python-magic && pip install Pillow)
 # -------------------------------------------------------------------------
 
 EXPOSE 8080
-ENTRYPOINT ["/home/bottle/python/2.7.6/bin/python", "/home/bottle/validator.py"]
+ENTRYPOINT ["/usr/bin/python", "/home/bottle/validator.py"]
 #ENTRYPOINT ["/home/bottle/"]
 USER bottle
