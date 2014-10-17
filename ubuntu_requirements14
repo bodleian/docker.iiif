@@ -1,0 +1,13 @@
+python-dev
+python-setuptools
+build-essential
+git
+gcc
+g++
+make
+unzip
+wget
+curl
+openssl
+libssl-dev
+
