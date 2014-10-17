@@ -62,6 +62,6 @@ RUN (pip install bottle && pip install python-magic && pip install Pillow)
 # -------------------------------------------------------------------------
 
 EXPOSE 8080
-ENTRYPOINT ["/usr/bin/python2.7", "/home/bottle/validator.py"]
+ENTRYPOINT ["/home/bottle/python/2.7.6/bin/python", "/home/bottle/validator.py"]
 #ENTRYPOINT ["/home/bottle/"]
 USER bottle
